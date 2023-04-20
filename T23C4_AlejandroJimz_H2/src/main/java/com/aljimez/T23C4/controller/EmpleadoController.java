@@ -14,62 +14,60 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aljimez.T23C4.service.EmpledosServiceImpl;
 import com.aljimez.T23C4.dto.Empleado;
 
-
 @RestController
 @RequestMapping("/api")
 public class EmpleadoController {
 
 	@Autowired
 	EmpledosServiceImpl empleadoServiceImpl;
-	
+
 	@GetMapping("/empleados")
-	public List<Empleado>listarEmpleados(){
-		
+	public List<Empleado> listarEmpleados() {
 		return empleadoServiceImpl.listarEmpleados();
 	}
-	@GetMapping("/empleados/nombre/{nombre}")
-	public List<Empleado>listarEmpleadoNombre(@PathVariable(name="nombre")String nombre){
-		return empleadoServiceImpl.listarEmpleadoNombre(nombre);
+
+	@GetMapping("/empleados/trabajo/{trabajo}")
+	public List<Empleado> listEmpleadosJob(@PathVariable(name = "trabajo") String trabajo) {
+		return empleadoServiceImpl.listEmpleadoByJob(trabajo);
 	}
 	@PostMapping("/empleados")
-	public Empleado salvarEmpleado(@RequestBody Empleado empleados){
-		return empleadoServiceImpl.guardarEmpleado(empleados);
+	public Empleado createEmpleado(@RequestBody Empleado empleado) {
+		return empleadoServiceImpl.createEmpleado(empleado);
 	}
+
 	@GetMapping("/empleados/{id}")
-	public Empleado empleadoXID(@PathVariable(name="id") Long id){
-		Empleado empleado_xid= new Empleado();
-		
-		empleado_xid=empleadoServiceImpl.empleadoXID(id);
-		
-		System.out.println("Cliente XID: "+empleado_xid);
-		
+	public Empleado empleadoXID(@PathVariable(name = "id") Long id) {
+		Empleado empleado_xid = new Empleado();
+
+		empleado_xid = empleadoServiceImpl.empleadoXID(id);
+
+		System.out.println("Empleados XID: " + empleado_xid);
+
 		return empleado_xid;
 	}
 
-	@GetMapping("/empleados/trabajo/{nombre}")
-	public List<Empleado> listEmpleadosJob(@PathVariable(name="nombre") String nombre) {
-		return empleadoServiceImpl.listEmpleadoByJob(nombre);
-	}
-	
-	@PutMapping("/empleados/{id}")
-		public Empleado actualizarEmpleado(@PathVariable(name="id")Long id,@RequestBody Empleado empleado) {
-			
-		Empleado empleado_seleccionado= new Empleado();
-		Empleado empleado_actualizado= new Empleado();
-			
-			empleado_seleccionado= empleadoServiceImpl.empleadoXID(id);
-			
-			empleado_seleccionado.setNombre(empleado.getNombre());
-			empleado_seleccionado.setTrabajo(empleado.getTrabajo());
 
-			empleado_seleccionado = empleadoServiceImpl.actualizarEmpleado(empleado_seleccionado);
-			
-			System.out.println("El empleado actualizado es: "+ empleado_actualizado);
-			
-			return empleado_actualizado;
+	@PutMapping("/empleados/{id}")
+	public Empleado actualizarEmpleado(@PathVariable(name = "id") Long id, @RequestBody Empleado empleado) {
+
+		Empleado empleado_seleccionado = new Empleado();
+		Empleado empleado_actualizado = new Empleado();
+
+		empleado_seleccionado = empleadoServiceImpl.empleadoXID(id);
+
+		empleado_seleccionado.setNombre(empleado.getNombre());
+		empleado_seleccionado.setTrabajo(empleado.getTrabajo());
+		empleado_seleccionado.setSalario(empleado.getSalario());
+
+		empleado_seleccionado = empleadoServiceImpl.actualizarEmpleado(empleado_seleccionado);
+
+		System.out.println("El empleado actualizado es: " + empleado_actualizado);
+
+		return empleado_actualizado;
 	}
+
 	@DeleteMapping("/empleados/{id}")
-	public void eliminarEmpleado(@PathVariable(name="id")Long id) {
+	public void eliminarEmpleado(@PathVariable(name = "id") Long id) {
 		empleadoServiceImpl.eliminarEmpleado(id);
 	}
 }
