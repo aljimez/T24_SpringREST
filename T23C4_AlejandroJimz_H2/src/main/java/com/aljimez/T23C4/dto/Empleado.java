@@ -7,6 +7,11 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import com.aljimez.T23C4.Trabajo.Trabajo;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,24 +27,16 @@ public class Empleado {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 		private Long id;
-		
+		@Column(name = "nombre")//no hace falta si se llama igual
 		private String nombre;
-		@Column(name = "name")//no hace falta si se llama igual
-		
-		private String trabajo;
 		@Column(name = "trabajo")//no hace falta si se llama igual
-		
-		private int dni;		
-		@Column(name = "dni")//no hace falta si se llama igual
-
+		private String trabajo;
 		@Temporal(TemporalType.TIMESTAMP)
 		private Date fecha;
-		
 		@Column(name = "salario")
-		private int salario;
-
-		private String apellido;
+		private double salario;
 		
+	
 		//Constructores
 		
 		public Empleado() {
@@ -55,37 +52,43 @@ public class Empleado {
 		 * @param fecha
 		 */
 		
-		public Empleado(Long id, String nombre, String apellido, int dni, String trabajo,int salario) {
-			//super();
+		public Empleado(Long id, String nombre,  String trabajo) {
+			super();
 			this.id = id;
 			this.nombre = nombre;
-			this.apellido = apellido;
 			this.trabajo = trabajo;
-			this.dni = dni;
-			this.salario = salario;
+			this.salario = obtenerSalarioPorTrabajo(trabajo);
 		}
 
-		public String getApellido() {
-			return apellido;
-		}
 
-		public void setApellido(String apellido) {
-			this.apellido = apellido;
-		}
-
-		public int getSalario() {
+		public double getSalario() {
+			
+			
 			return salario;
 		}
 
 		public void setSalario(int salario) {
+		
 			this.salario = salario;
 		}
 
+		public double obtenerSalarioPorTrabajo(String trabajo) {
+			Trabajo[] trabajos_disponibles = Trabajo.values();
+
+			for (Trabajo trabajos : trabajos_disponibles) {
+				if (trabajos.name().equalsIgnoreCase(trabajo)) {
+					return trabajos.getSalario();
+				}
+			}
+			return 0;
+		}
 		public String getTrabajo() {
 			return trabajo;
 		}
 		public void setTrabajo(String trabajo) {
+			
 			this.trabajo = trabajo;
+			
 		}
 
 		//Getters y Setters
@@ -122,17 +125,7 @@ public class Empleado {
 		/**
 		 * @return the dni
 		 */
-		public int getDni() {
-			return dni;
-		}
-
-		/**
-		 * @param dni the dni to set
-		 */
-		public void setDni(int dni) {
-			this.dni = dni;
-		}
-
+	
 		/**
 		 * @return the fecha
 		 */
@@ -149,9 +142,11 @@ public class Empleado {
 
 		@Override
 		public String toString() {
-			return "Empleado [id=" + id + ", nombre=" + nombre + ", trabajo=" + trabajo + ", dni=" + dni + ", fecha="
-					+ fecha + ", salario=" + salario + ", apellido=" + apellido + "]";
+			return "Empleado [id=" + id + ", nombre=" + nombre + ", trabajo=" + trabajo + ", fecha=" + fecha
+					+ ", salario=" + salario + "]";
 		}
+
+		
 
 		
 	

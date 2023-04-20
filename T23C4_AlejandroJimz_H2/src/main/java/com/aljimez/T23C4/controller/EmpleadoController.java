@@ -60,7 +60,6 @@ public class EmpleadoController {
 			empleado_seleccionado= empleadoServiceImpl.empleadoXID(id);
 			
 			empleado_seleccionado.setNombre(empleado.getNombre());
-			empleado_seleccionado.setDni(empleado.getDni());
 			empleado_seleccionado.setTrabajo(empleado.getTrabajo());
 
 			empleado_seleccionado = empleadoServiceImpl.actualizarEmpleado(empleado_seleccionado);

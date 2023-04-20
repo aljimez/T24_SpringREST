@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aljimez.T23C4.dao.IEmpleadoDAO;
 import com.aljimez.T23C4.dto.Empleado;
-import com.aljimez.T23C4.utils.Jobs;
 @RestController
 public class EmpledosServiceImpl {
 
@@ -48,23 +47,6 @@ public class EmpledosServiceImpl {
 	}
 	
 	public List<Empleado> listEmpleadoByJob(String trabajo) {
-		Jobs trabajo_actual = Jobs.OPERARIO;
-		switch (trabajo) {
-		case "OPERARIO":
-			trabajo_actual = Jobs.OPERARIO;
-			break;
-			
-		case "COMERCIAL":
-			trabajo_actual = Jobs.COMERCIAL;
-			break;
-			
-		case "TECNICO":
-			trabajo_actual = Jobs.TECNICO;
-			break;
-
-		default:
-			break;
-		}
-		return iEmpleadoDAO.findByTrabajo(trabajo_actual);
+		return iEmpleadoDAO.findByTrabajo(trabajo);
 	}
 }
