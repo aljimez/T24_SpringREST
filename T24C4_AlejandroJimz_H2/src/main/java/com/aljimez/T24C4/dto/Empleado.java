@@ -1,6 +1,4 @@
-package com.aljimez.T23C4.dto;
-
-
+package com.aljimez.T24C4.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +28,6 @@ public class Empleado {
 
 	}
 
-
 	public Empleado(Long id, String nombre, String trabajo, double salario) {
 		super();
 		this.id = id;
@@ -41,7 +38,7 @@ public class Empleado {
 
 	public double getSalario() {
 
-		return salario;
+		return salario;// trabajoDisponible(trabajo);
 	}
 
 	public void setSalario(double salario) {
@@ -50,6 +47,7 @@ public class Empleado {
 	}
 
 	public String getTrabajo() {
+
 		return trabajo;
 	}
 
@@ -57,13 +55,13 @@ public class Empleado {
 		this.trabajo = trabajo;
 		switch (trabajo) {
 		case "gestor":
-			salario = 2000.00;
+			setSalario(salario = 2000.00);
 			break;
 		case "operario":
-			salario = 1800.00;
+			setSalario(salario = 1800.00);
 			break;
 		case "administrador":
-			salario = 1000.00;
+			setSalario(salario = 1000.00);
 			break;
 		}
 	}

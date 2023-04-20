@@ -1,4 +1,4 @@
-package com.aljimez.T23C4;
+package com.aljimez.T24C4;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class webConfiguration implements WebMvcConfigurer{
 
 	 public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("*").allowedOrigins("*").allowedMethods("*");
+	        registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
 	    }
 	
 }

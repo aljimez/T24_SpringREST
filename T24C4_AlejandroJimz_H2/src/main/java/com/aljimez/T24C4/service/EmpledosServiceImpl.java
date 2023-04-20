@@ -1,4 +1,4 @@
-package com.aljimez.T23C4.service;
+package com.aljimez.T24C4.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aljimez.T23C4.dao.IEmpleadoDAO;
-import com.aljimez.T23C4.dto.Empleado;
+import com.aljimez.T24C4.dao.IEmpleadoDAO;
+import com.aljimez.T24C4.dto.Empleado;
 
 @Service
 public class EmpledosServiceImpl {

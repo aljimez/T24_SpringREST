@@ -1,4 +1,4 @@
-package com.aljimez.T23C4.controller;
+package com.aljimez.T24C4.controller;
 
 import java.util.List;
 
@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.aljimez.T23C4.service.EmpledosServiceImpl;
-import com.aljimez.T23C4.dto.Empleado;
+
+import com.aljimez.T24C4.dto.Empleado;
+import com.aljimez.T24C4.service.EmpledosServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -30,7 +32,7 @@ public class EmpleadoController {
 	public List<Empleado> listEmpleadosJob(@PathVariable(name = "trabajo") String trabajo) {
 		return empleadoServiceImpl.listEmpleadoByJob(trabajo);
 	}
-	@PostMapping("/empleados")
+	@RequestMapping(value="/empleados",method=RequestMethod.POST)
 	public Empleado createEmpleado(@RequestBody Empleado empleado) {
 		return empleadoServiceImpl.createEmpleado(empleado);
 	}

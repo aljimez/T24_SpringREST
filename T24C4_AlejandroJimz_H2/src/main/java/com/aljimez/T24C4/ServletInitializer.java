@@ -1,4 +1,4 @@
-package com.aljimez.T23C4;
+package com.aljimez.T24C4;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(T23C4AlejandroJimzH2Application.class);
+		return application.sources(T24C4AlejandroJimzH2Application.class);
 	}
 
 }

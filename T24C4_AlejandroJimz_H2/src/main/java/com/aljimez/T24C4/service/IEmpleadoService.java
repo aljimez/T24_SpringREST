@@ -1,8 +1,8 @@
-package com.aljimez.T23C4.service;
+package com.aljimez.T24C4.service;
 
 import java.util.List;
 
-import com.aljimez.T23C4.dto.Empleado;
+import com.aljimez.T24C4.dto.Empleado;
 public interface IEmpleadoService {
 	//Metodos del CRUD
 	public  List<Empleado> listarEmpleados(); //Listar All 
