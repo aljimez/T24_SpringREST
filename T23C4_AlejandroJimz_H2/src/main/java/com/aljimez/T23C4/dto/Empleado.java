@@ -52,12 +52,13 @@ public class Empleado {
 		 * @param fecha
 		 */
 		
-		public Empleado(Long id, String nombre,  String trabajo) {
+		public Empleado(Long id, String nombre,  String trabajo,int salario) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
 			this.trabajo = trabajo;
-			this.salario = obtenerSalarioPorTrabajo(trabajo);
+			//this.salario = obtenerSalarioPorTrabajo(trabajo);
+			this.salario = salario;
 		}
 
 
@@ -72,7 +73,7 @@ public class Empleado {
 			this.salario = salario;
 		}
 
-		public double obtenerSalarioPorTrabajo(String trabajo) {
+	/*	public double obtenerSalarioPorTrabajo(String trabajo) {
 			Trabajo[] trabajos_disponibles = Trabajo.values();
 
 			for (Trabajo trabajos : trabajos_disponibles) {
@@ -81,14 +82,25 @@ public class Empleado {
 				}
 			}
 			return 0;
-		}
+		}*/
+		
+		
 		public String getTrabajo() {
 			return trabajo;
 		}
 		public void setTrabajo(String trabajo) {
-			
 			this.trabajo = trabajo;
-			
+			switch (trabajo) {
+			case "gestor":
+				salario = 2000.00;
+				break;
+			case "ingeniero":
+				salario = 1800.00;
+				break;
+			case "cajero":
+				salario = 1000.00;
+				break;
+			}
 		}
 
 		//Getters y Setters
