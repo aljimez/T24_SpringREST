@@ -57,7 +57,6 @@ public class Empleado {
 			this.id = id;
 			this.nombre = nombre;
 			this.trabajo = trabajo;
-			//this.salario = obtenerSalarioPorTrabajo(trabajo);
 			this.salario = salario;
 		}
 
@@ -73,16 +72,6 @@ public class Empleado {
 			this.salario = salario;
 		}
 
-	/*	public double obtenerSalarioPorTrabajo(String trabajo) {
-			Trabajo[] trabajos_disponibles = Trabajo.values();
-
-			for (Trabajo trabajos : trabajos_disponibles) {
-				if (trabajos.name().equalsIgnoreCase(trabajo)) {
-					return trabajos.getSalario();
-				}
-			}
-			return 0;
-		}*/
 		
 		
 		public String getTrabajo() {
