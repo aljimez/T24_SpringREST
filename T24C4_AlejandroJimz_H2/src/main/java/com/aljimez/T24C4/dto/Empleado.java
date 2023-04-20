@@ -55,13 +55,13 @@ public class Empleado {
 		this.trabajo = trabajo;
 		switch (trabajo) {
 		case "gestor":
-			setSalario(salario = 2000.00);
+			salario = 2000.00;
 			break;
 		case "operario":
-			setSalario(salario = 1800.00);
+			salario = 1800.00;
 			break;
 		case "administrador":
-			setSalario(salario = 1000.00);
+			salario = 1000.00;
 			break;
 		}
 	}

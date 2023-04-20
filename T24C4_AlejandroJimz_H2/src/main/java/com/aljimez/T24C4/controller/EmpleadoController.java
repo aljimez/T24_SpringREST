@@ -32,7 +32,7 @@ public class EmpleadoController {
 	public List<Empleado> listEmpleadosJob(@PathVariable(name = "trabajo") String trabajo) {
 		return empleadoServiceImpl.listEmpleadoByJob(trabajo);
 	}
-	@RequestMapping(value="/empleados",method=RequestMethod.POST)
+	@PostMapping(value="/empleados")
 	public Empleado createEmpleado(@RequestBody Empleado empleado) {
 		return empleadoServiceImpl.createEmpleado(empleado);
 	}
